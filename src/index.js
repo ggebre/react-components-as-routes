@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Home from './Home'
+import About from './About'
+import Login from './Login'
+import Navbar from './Navbar'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
-const Home = () => {
-  return (
-    <div>
-      <h1>Home!</h1>
-    </div>
-  );
-};
 
 ReactDOM.render(
-  <Home />,
+  (<Router>
+    <div>
+      <Navbar />
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/login" component={Login} />
+      <Route exact path="/simple" render={() => <h1>SIMPLE InLine Rendering NOT GOOD BUT POSSIBLE</h1>} />
+
+    </div>
+  </Router>),
+  
   document.getElementById('root')
 );
